@@ -73,3 +73,11 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "acts_as_list", "~> 1.0"
+
+gem "redcarpet", "~> 3.5"
+
+gem "rouge", "~> 4.0"
+
+gem "tailwindcss-rails", "~> 2.0"
