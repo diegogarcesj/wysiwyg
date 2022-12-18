@@ -10,10 +10,11 @@
       mousedown->editable#mouseDown
       ">
     <%= fragment.render %>
-  
-    <%= form_tag(root_path, method: :patch) do %>
-      <%= hidden_field_tag 'data' %>
-      <%= hidden_field_tag 'id', fragment.id %>    
+
+    <%= form_with(url: root_path(fragment.id), method: :patch) do |form| %>
+      <%= form.text_area(:data, hidden: true) %>
+      <%= hidden_field_tag 'id', fragment.id %>
+      <%= form.submit("Save", hidden: true) %>
     <% end %>
   </div>
 <% end %>

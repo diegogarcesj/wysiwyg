@@ -24,7 +24,8 @@ module MarkdownRenderer
       no_intra_emphasis: true,
       space_after_headers: false,
       highlight: true,
-      with_toc_data: true
+      with_toc_data: true,
+      strikethrough: true
     ).render(content).html_safe
   end
 end

@@ -16,6 +16,14 @@ export function turndownService() {
     }
   })
 
+  // Add new rule for strikethrough
+  service.addRule('strikethrough', {
+    filter: ['del', 's', 'strike'],
+    replacement: function (content, node, options) {
+      return '~~' + content + '~~'
+    }
+  })
+
   // Ignore <form></form> elements
   service.remove(['form'])
 
