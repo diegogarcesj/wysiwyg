@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { turndownService } from "../lib/turndown_service"
 
 // Connects to data-controller="editable"
 export default class extends Controller {
@@ -23,6 +24,11 @@ export default class extends Controller {
   }
 
   save() {
-    // TODO
+    // Convert the element this controller is attached to
+    let markdown = turndownService().turndown(this.element)
+
+    // Dynamically fill out the form data and submit
+    this.element.querySelector("#data").value = markdown
+    this.element.querySelector("form").requestSubmit()
   }
 }

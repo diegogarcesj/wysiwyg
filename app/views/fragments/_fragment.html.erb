@@ -5,6 +5,12 @@
     data-controller="editable"
     data-action="click->editable#click blur->editable#blur keydown->editable#keydown">
     <%= fragment.render %>
+  
+    <%= form_tag(root_path, method: :patch) do %>
+      <%= hidden_field_tag 'data' %>
+      <%= hidden_field_tag 'id', fragment.id %>    
+    <% end %>
+    
   </div>
 
 <% end %>
