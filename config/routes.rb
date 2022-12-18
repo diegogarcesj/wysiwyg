@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'document#index'
   patch '/', to: 'fragments#save'
+  post '/', to: 'fragments#create', as: :fragments
 end
