@@ -2,7 +2,13 @@
   <div
     class="fragment <%= fragment.element %>"
     data-controller="editable"
-    data-action="click->editable#click blur->editable#blur keydown->editable#keydown">
+    data-action="
+      click->editable#click
+      blur->editable#blur
+      keydown->editable#keydown
+      mouseup->editable#mouseUp
+      mousedown->editable#mouseDown
+      ">
     <%= fragment.render %>
   
     <%= form_tag(root_path, method: :patch) do %>

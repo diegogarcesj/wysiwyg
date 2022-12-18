@@ -1,6 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 import { turndownService } from "../lib/turndown_service"
 
+import rangy from "rangy"
+import "rangy/lib/rangy-textrange"
+import { show_format_selection_menu } from "../lib/context_menus"
+
 // Connects to data-controller="editable"
 export default class extends Controller {
   connect() {
@@ -30,5 +34,23 @@ export default class extends Controller {
     // Dynamically fill out the form data and submit
     this.element.querySelector("#data").value = markdown
     this.element.querySelector("form").requestSubmit()
+  }
+
+  mouseDown(event) {
+    rangy.getSelection().removeAllRanges()
+  }
+
+  mouseUp(event) {
+    // get the current selection from window
+    let selection = rangy.getSelection()
+
+    // we can return early when the selection is collapsed
+    if (selection.isCollapsed) { return }
+
+    // Trim whitespace from the selection
+    selection.trim()
+
+    // show format selection menu
+    show_format_selection_menu(this.element)
   }
 }
